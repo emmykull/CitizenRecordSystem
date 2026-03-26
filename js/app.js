@@ -4,7 +4,7 @@ function login() {
     let pass = document.getElementById("password").value;
 
     if (user === "admin" && pass === "1234") {
-        window.location.href = "dashboard.php";
+        window.location.href = "dashboard.html";
     } else {
         alert("Invalid login");
     }
@@ -12,7 +12,7 @@ function login() {
 
 // LOGOUT
 function logout() {
-    window.location.href = "index.php";
+    window.location.href = "index.html";
 }
 
 // GENERATE ID
