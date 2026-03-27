@@ -5,22 +5,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+   <header>
+ <a href="dashboard.html"><button class="back-btn">⬅️</button></a>
 <h1>Unified Citizen Record System</h1>
 <p>Government Prototype for Citizen Data Management</p>
-<h2>Citizen Records</h2>
-
+   </header>
+<div class="container">
+    <h2>Citizen Records</h2>
+</div>
 <table border="1">
     <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>DOB</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody id="recordsTable"></tbody>
 </table>
 
-<a href="dashboard.html">Back</a>
+
 
 <script src="js/app.js"></script>
 </body>
