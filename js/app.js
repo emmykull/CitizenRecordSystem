@@ -49,7 +49,7 @@ function saveCitizen() {
     localStorage.setItem("citizens", JSON.stringify(records));
 
     alert("Citizen Registered!");
-
+ 
     document.getElementById("name").value = "";
     document.getElementById("dob").value = "";
     document.getElementById("place").value = "";
@@ -62,12 +62,45 @@ if (document.getElementById("recordsTable")) {
     let records = JSON.parse(localStorage.getItem("citizens")) || [];
     let table = document.getElementById("recordsTable");
 
-    records.forEach(c => {
-        let row = `<tr>
-            <td>${c.id}</td>
-            <td>${c.name}</td>
-            <td>${c.dob}</td>
-        </tr>`;
-        table.innerHTML += row;
-    });
+    records.forEach((c, index) => {
+    let row = `<tr>
+        <td>${c.id}</td>
+        <td>${c.name}</td>
+        <td>${c.dob}</td>
+        <td>
+            <button onclick="editCitizen(${index})">✏️ Edit</button>
+            <button onclick="deleteCitizen(${index})">🗑️ Delete</button>
+        </td>
+    </tr>`;
+    table.innerHTML += row;
+});
+}
+
+function deleteCitizen(index) {
+    let records = JSON.parse(localStorage.getItem("citizens")) || [];
+
+    if (confirm("Are you sure you want to delete this record?")) {
+        records.splice(index, 1);
+        localStorage.setItem("citizens", JSON.stringify(records));
+        location.reload();
+    }
+}
+
+function editCitizen(index) {
+    let records = JSON.parse(localStorage.getItem("citizens")) || [];
+
+    let citizen = records[index];
+
+    let newName = prompt("Edit Name:", citizen.name);
+    let newDob = prompt("Edit Date of Birth:", citizen.dob);
+
+    if (newName && newDob) {
+        citizen.name = newName;
+        citizen.dob = newDob;
+
+        records[index] = citizen;
+        localStorage.setItem("citizens", JSON.stringify(records));
+
+        location.reload();
+    }
 }
